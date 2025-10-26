@@ -1,0 +1,533 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Funkybot’s ToneX Captures</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+
+    <style>
+      /* Force uniform thumbnail windows for featured images */
+      .image.featured.thumb {
+        display: block;
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        overflow: hidden;
+        border-radius: 0.25rem;
+      }
+      .image.featured.thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+      }
+
+      /* Hide "by Funkybot" when screen gets tight */
+      @media (max-width: 1280px) {
+        #logo span {
+          display: none;
+        }
+      }
+	 
+      /* ---- Card Uniformity & Layout ---- */
+      #features-wrapper .row > [class*="col-"] > .box.feature {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+      }
+      .box.feature .inner { display: flex; flex-direction: column; flex: 1 1 auto; }
+      .box.feature .inner header { display: flex; flex-direction: column; justify-content: flex-start; margin-bottom: 0.35rem; }
+      .box.feature .inner header .meta { font-size: 0.9em; opacity: 0.75; margin: 0.1em 0 0.3em 0; }
+      .box.feature .inner .content { flex: 1 1 auto; display: flex; flex-direction: column; gap: 0.5rem; }
+      .box.feature .inner .desc { line-height: 1.5; margin: 0; }
+      .box.feature .inner .actions { margin-top: 1.5em; }
+      .box.feature .inner .actions .button { min-width: 10.5rem; }
+
+      /* Style for IR Last Updated line */
+      #irs .meta { font-size: 0.9em; opacity: 0.75; margin: 0.5em 0 1em 0; }
+
+      /* ---- Banner Styling Enhancements ---- */
+      #banner h2 { font-size: 2em; margin-bottom: 0.4em; }
+      #banner p {
+        color: inherit; font-size: 1.05em; line-height: 1.6; margin-bottom: 1.25em; font-weight: 400; max-width: 90%;
+      }
+      #banner ul { margin-top: 0.5em; }
+      #banner .button { font-size: 0.95em; padding: 0.65em 1.25em; }
+
+      /* ===== Header: single row, no overlap ===== */
+      /* Make header a solid flex row so logo and nav never overlap */
+      #header.container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+      #logo { flex: 0 0 auto; }
+      #nav { flex: 1 1 0; }                 /* nav gets remaining space */
+      #header #nav ul {
+        display: flex !important;           /* ensure visible */
+        flex-wrap: nowrap;                  /* single row */
+        gap: 0.35rem 0.75rem;
+        justify-content: flex-end;
+        align-items: center;
+      }
+      #header #nav ul li { white-space: nowrap; }
+
+      /* Medium widths: tighten spacing so items fit before they approach the logo */
+      @media (max-width: 1280px) {
+        #header #nav ul li a { padding: 0.4em 0.7em; font-size: 0.95em; }
+      }
+      @media (max-width: 1080px) {
+        #header #nav ul li a { padding: 0.35em 0.6em; font-size: 0.93em; }
+      }
+      /* If it still gets tight, allow very light wrapping WITHIN the nav area,
+         but keep it from touching the logo by reserving space via gap */
+      @media (max-width: 980px) {
+        #header #nav ul { flex-wrap: wrap; row-gap: 0.25rem; }
+      }
+	 
+      /* ---- Responsive Grid for Amp Captures: MAX 3 per row ---- */
+      #captures .row {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr)); /* never more than 3 */
+        gap: 2rem;
+      }
+      
+      /* Medium screens: 2 per row */
+      @media (max-width: 1100px) {
+        #captures .row {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+      
+      /* Small screens: 1 per row */
+      @media (max-width: 640px) {
+        #captures .row {
+          grid-template-columns: 1fr;
+        }
+      }
+      
+      /* Keep existing card flex layout so heights align and buttons stay pinned */
+      #captures .row > [class*="col-"] {
+        display: block; /* override old flex columns */
+        width: 100%;
+      }
+      .box.feature {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+      .box.feature .inner {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 auto;
+      }
+      .box.feature .inner .content {
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .box.feature .inner .actions {
+        margin-top: 1.5em;
+      }
+	 
+	 /* Add breathing room between IRs and FAQs */
+      #irs {
+        margin-bottom: 2.5em; /* space below the IR section */
+      }
+      
+      #faq-wrapper {
+        padding-top: 1.5em;  /* small extra space before FAQs start */
+      }
+	 
+	 @media (max-width: 768px) {
+        #irs { margin-bottom: 2em; }
+        #faq-wrapper { padding-top: 1em; }
+      }
+	 
+      /* Tighten spacing inside FAQ answers */
+      #faq-wrapper .faq-list p {
+        line-height: 1.4;        /* tighten text lines slightly */
+        margin-top: 0.4em;       /* small gap above paragraphs */
+        margin-bottom: 0.8em;    /* reduce bottom space */
+      }
+      
+      #faq-wrapper .faq-list br {
+        line-height: 1;          /* make <br> breaks tighter */
+      }
+      
+      #faq-wrapper details summary {
+        cursor: pointer;
+        font-weight: 600;
+        margin-bottom: 0.3em;
+      }
+      
+      #faq-wrapper details[open] summary {
+        margin-bottom: 0.6em;    /* small extra space when opened */
+      }
+	 
+	 /* ---- Feature Tags (DI, +IR, Full Capture) ---- */
+      .feature-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-top: 0.35rem;
+      }
+      
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: .02em;
+        padding: 0.2em 0.55em;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        line-height: 1;
+        user-select: none;
+      }
+      
+      /* Variants */
+      .tag-di {
+        background: #e3f2fd;       /* light blue */
+        color: #0d47a1;            /* deep blue text */
+        border-color: #bbdefb;
+      }
+      
+      .tag-ir {
+        background: #e8f5e9;       /* light green */
+        color: #1b5e20;            /* deep green text */
+        border-color: #c8e6c9;
+      }
+      
+      .tag-full {
+        background: #fff3e0;       /* light orange */
+        color: #e65100;            /* deep orange text */
+        border-color: #ffe0b2;
+      }
+      
+      /* Make sure tags don’t crowd small screens */
+      @media (max-width: 480px) {
+        .feature-tags { gap: 0.3rem; }
+        .tag { font-size: 0.72rem; padding: 0.18em 0.5em; }
+      }
+	 
+	 /* When tags are placed below the actions area */
+      .box.feature .feature-tags {
+        margin-top: 1.0em;
+        justify-content: flex-start;
+      }
+    </style>
+  </head>
+  <body class="is-preload homepage">
+    <div id="page-wrapper">
+
+      <!-- Header -->
+      <div id="header-wrapper">
+        <header id="header" class="container">
+          <div id="logo">
+            <h1><a href="index.html">ToneX Captures</a></h1>
+            <span>by Funkybot</span>
+          </div>
+          <nav id="nav">
+            <ul>
+              <!-- Home removed on the home page -->
+              <li><a href="#captures">Amp Captures</a></li>
+              <li><a href="#irs">Impulse Responses</a></li>
+              <li><a href="legacy.html">Legacy Captures</a></li>
+              <li><a href="#about">About</a></li>
+            </ul>
+          </nav>
+        </header>
+      </div>
+
+      <!-- Banner -->
+      <div id="banner-wrapper">
+        <div id="banner" class="box container">
+          <div class="row">
+            <div class="col-7 col-12-medium">
+              <h2>Funkybot's ToneX Collection</h2>
+              <p>
+                ToneX v2 captures and cab IRs of my personal amps and pedals — free to download and use.
+                <br>Check back regularly for updates.
+              </p>
+            </div>
+            <div class="col-5 col-12-medium">
+              <ul>
+                <li><a href="#captures" class="button large icon solid fa-arrow-circle-right">Amp Captures</a></li>
+                <li><a href="#irs" class="button alt large icon solid fa-headphones">Free Cab IRs</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+   <!-- Features -->
+  <div id="features-wrapper">
+    <div class="container" id="captures">
+      <header class="major">
+        <h2>Amp Captures</h2>
+      </header>
+  
+      <div class="row">
+  
+        <!-- Card 1 -->
+        <div class="col-4 col-12-medium">
+          <section class="box feature">
+            <a href="captures/79_Princeton_Reverb.zip" class="image featured thumb">
+              <img src="images/PrincetonReverb.png" alt="1979 Fender Princeton Reverb" />
+            </a>
+            <div class="inner">
+              <header>
+                <h2>1979 Fender Princeton Reverb</h2>
+                <p class="meta">Last Updated: <time datetime="2025-10-25">Oct 25, 2025</time></p>
+	         </header>
+              <div class="content">
+                <p>Classic blackface sparkle and bite</p>
+                <p class="desc">
+                  A set of ToneX captures from a 1979 Fender Princeton Reverb with a reconed,
+                  vintage Jensen C10Q. The amp has been modded to black panel specs, with an
+                  additional Mids pot on the rear and added Phase Inverter grid stoppers to
+                  improve the distorted tones.
+                </p>
+              </div>
+              <div class="actions">
+                <a href="captures/79_Princeton_Reverb.zip" class="button icon solid fa-download">Download</a>
+              </div>
+               <div class="feature-tags" aria-label="Capture feature tags">
+                 <span class="tag tag-di" aria-label="Direct Input">DI</span>
+                 <span class="tag tag-ir" aria-label="Includes Impulse Responses">+IR</span>
+               </div>  
+            </div>
+          </section>
+        </div>
+  
+        <!-- Card 2 -->
+        <div class="col-4 col-12-medium">
+          <section class="box feature">
+            <a href="captures/79_Vibrolux_Reverb.zip" class="image featured thumb">
+              <img src="images/VibroluxReverb.png" alt="1979 Fender Vibrolux Reverb" />
+            </a>
+            <div class="inner">
+              <header>
+                <h2>1979 Fender Vibrolux Reverb</h2>
+                <p class="meta">Last Updated: <time datetime="2025-10-25">Oct 25, 2025</time></p>
+              </header>
+              <div class="content">
+                <p>Big Fender chime with extra warmth</p>
+                <p class="desc">
+                  A 1979 Vibrolux Reverb with Eminence Alessandro GA10-SC64’s and the boost circuit
+                  removed. Captures of both the Normal and Vibrato channels with Bright switch
+                  variations. The Vibrato channel’s unique volume taper lends itself to beautifully
+                  balanced clean and edge-of-breakup tones.
+                </p>
+              </div>
+              <div class="actions">
+                <a href="captures/79_Vibrolux_Reverb.zip" class="button icon solid fa-download">Download</a>
+              </div>
+		     <div class="feature-tags" aria-label="Capture feature tags">
+                 <span class="tag tag-di" aria-label="Direct Input">DI</span>
+                 <span class="tag tag-ir" aria-label="Includes Impulse Responses">+IR</span>
+               </div>  
+              </div>
+		</section>
+        </div>
+  
+        <!-- Card 3 -->
+        <div class="col-4 col-12-medium">
+          <section class="box feature">
+            <a href="captures/2001_TopHat_KingRoyale.zip" class="image featured thumb">
+              <img src="images/KingRoyale.png" alt="Top Hat King Royale" />
+            </a>
+            <div class="inner">
+              <header>
+                <h2>2001 Top Hat King Royale</h2>
+                <p class="meta">Last Updated: <time datetime="2025-10-25">Oct 25, 2025</time></p>
+              </header>
+              <div class="content">
+                <p>British EL84 brilliance and grit</p>
+                <p class="desc">
+                  A boutique take on the Vox AC-30 circuit. Channel 1 is the “Normal” channel with
+                  Tone and Cut controls only — huge, warm cleans. Channel 2 is the “Top Boost”
+                  channel, offering chime and drive. Captures include both channels and jumped
+                  variations using the amp’s dual gain-structure switches.
+                </p>
+              </div>
+              <div class="actions">
+                <a href="captures/2001_TopHat_KingRoyale.zip" class="button icon solid fa-download">Download</a>
+              </div>
+		    	<div class="feature-tags" aria-label="Capture feature tags">
+                 <span class="tag tag-di" aria-label="Direct Input">DI</span>
+                 <span class="tag tag-ir" aria-label="Includes Impulse Responses">+IR</span>
+               </div> 
+            </div>
+          </section>
+        </div>
+  
+        <!-- Card 4 -->
+        <div class="col-4 col-12-medium">
+          <section class="box feature">
+            <a href="captures/Vox_AC15C1X.zip" class="image featured thumb">
+              <img src="images/VoxAC15C1X.png" alt="Vox AC15C1X" />
+            </a>
+            <div class="inner">
+              <header>
+                <h2>Vox AC15C1X</h2>
+                <p class="meta">Last Updated: <time datetime="2025-10-26">Oct 26, 2025</time></p>
+              </header>
+              <div class="content">
+                <p>Iconic Vox chime and Crunch</p>
+                <p class="desc">
+                  Captured from a Vox AC15C1X with some mods to bring it more in line with the JMI era.  
+                  This amp delivers the quintessential Vox compression, sparkle, and midrange
+                  jangle that defines countless British recordings. Captures include Normal and
+                  Top Boost channels, with multiple Bright and Volume settings to showcase the
+                  amp’s dynamic character.
+                </p>
+              </div>
+              <div class="actions">
+                <a href="captures/Vox_AC15C1X.zip" class="button icon solid fa-download">Download</a>
+              </div>
+		    	<div class="feature-tags" aria-label="Capture feature tags">
+                 <span class="tag tag-di" aria-label="Direct Input">DI</span>
+                 <span class="tag tag-ir" aria-label="Includes Impulse Responses">+IR</span>
+               </div> 
+            </div>
+          </section>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+
+      <!-- Impulse Responses -->
+      <div id="main-wrapper">
+        <div class="container" id="irs">
+          <section>
+            <header class="major">
+              <h2>Free Impulse Responses</h2>
+            </header>
+
+            <p class="meta">Last Updated: <time datetime="2025-10-25">Oct 25, 2025</time></p>
+
+            <p>Download my personal collection of guitar cabinet IRs captured using a Fryette PS-2A, RME interface, and SM57 + Beyer M160 mic setup. Perfect for close mic'd rock and roll tones. I'll continue to add to this set over time so check back regularly and pay attention to the last updated date.</p>
+
+            <ul class="actions">
+              <li><a href="IRs/ChristopherReis_Free_IRs.zip" class="button icon solid fa-download">Download IR Pack</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+     <!-- FAQs -->
+     <div id="faq-wrapper">
+       <div class="container" id="faq">
+         <header class="major">
+           <h2>Capture FAQs</h2>
+         </header>
+     
+         <div class="faq-list">
+           <details>
+             <summary>How do I install these?</summary>
+             <p>
+               For ToneX captures, you must extract the ZIP file first. Once extracted, open the ToneX plugin and drag the extracted files into the Tone Model list in ToneX. The presets should automatically import.
+               You can also use the Import option from the File menu.<br><br>
+               For the Impulse Responses, you can use them in any IR loader, including ToneX. See the documentation for your IR loader of choice.
+             </p>
+           </details>
+     
+           <details>
+             <summary>What input gain settings do you use?</summary>
+             <p>
+               I keep my ToneX (not the One) pedal at the default setting (+8.5 dB). In the ToneX software, if you’re targeting about -12 dBU, you’ll be right in the ballpark.
+             </p>
+           </details>
+     
+           <details>
+             <summary>What is your naming convention?</summary>
+             <p>
+               If the amp has just a few controls, like the Princeton, I’ll include the settings in the Tone Model name. If the amp has a large number of controls where that’s an issue, then see the next question...
+             </p>
+           </details>
+     
+           <details>
+             <summary>Why label captures A, B, C, etc.?</summary>
+             <p>
+               For amps with lots of controls, I label them alphabetically by gain level so you can sort by name in the ToneX software and scroll through different gain levels easily.
+               Note that the gain levels are an approximation — for example, if an amp has a pre–phase inverter master volume, a gain level of 8 with the master turned down low may actually have less gain than a capture at 7 with the master at 10. The gain levels are just guidelines dialed in by ear.
+             </p>
+           </details>
+     
+           <details>
+             <summary>What do BAL, BRT, WRM, SCP, CUT mean?</summary>
+             <p>
+               They indicate EQ profiles:<br>
+               <strong>BAL</strong> = Balanced (usually dialed in for a Strat)<br>
+               <strong>BRT</strong> = Brighter, less bass (pairs well with humbuckers)<br>
+               <strong>WRM</strong> = Warmer, fewer highs, more bass (think Telecaster bridge pickup)<br>
+               <strong>DRK</strong> = Darker, more subdued or jazzy<br>
+               <strong>MID / MID+</strong> = Pushed midrange<br>
+               <strong>CUT</strong> = Treble cut
+             </p>
+           </details>
+     
+           <details>
+             <summary>Where do you document the amp settings?</summary>
+             <p>
+               The amp settings for all captures are typically in the Description field. I try to be as explicit as possible but sometimes need to abbreviate settings to fit within character limits.
+               You’ll usually find the guitar or pickup types used when dialing in the tone in the Notes field.
+             </p>
+           </details>
+     
+           <details>
+             <summary>Why don't you charge for these captures?</summary>
+             <p>
+               This question comes up a lot. I make these captures for myself — I love having the ability to play through my amps from anywhere, at any time of day or night, via ToneX. I also like to make a lot of captures of my amps so I don't feel like I'm missing a setting or can't find a tone that's just right for whichever guitar I'm playing.<br><br>
+               Charging for captures would mean handling support requests, setting up a business entity, and/or dealing with taxes — none of which I'm particularly interested in.<br><br>
+               My goal is simply to make killer-sounding captures of my own gear that are on par with, or better than, some commercially available captures — and I do that because that’s what I want for myself.
+             </p>
+           </details>
+
+           <details>
+             <summary>Please like on Tone.net!</summary>
+             <p>
+               If you dig these captures, a like on Tone.net helps others find them.
+             </p>
+           </details>
+         </div>
+       </div>
+     </div>
+
+      <!-- Footer -->
+      <div id="footer-wrapper">
+        <footer id="footer" class="container">
+          <section id="about">
+            <h2>About This Project</h2>
+            <p>I make these captures and IR's of my personal amp collection for my own use and I'm happy to share with others.</p>
+
+            <p style="margin-top: 1.75em;">
+              <strong>License &amp; Usage:</strong> All captures and impulse responses on this site are free for anyone to download, use, and share. Feel free to make music, release tracks, or share them with friends. Just please don’t resell or include these files in any paid pack, product, or commercial library without my permission. Thanks for keeping it fair — and enjoy the tones!
+            </p>
+
+            <p style="font-size: 0.95em; color: inherit; opacity: 0.85; margin-top: 1em;">
+              <strong>Disclaimer:</strong> All brand names, trademarks, and product names mentioned on this site are the property of their respective owners and are used here for reference purposes only. This site is not affiliated with or endorsed by any of the manufacturers listed.
+            </p>
+
+            <ul class="menu">
+              <li>&copy; 2025 Funkybot. Design based on an HTML5 UP theme (CC BY 3.0) — <a href="https://html5up.net">html5up.net</a>.</li>
+            </ul>
+          </section>
+        </footer>
+      </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.dropotron.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

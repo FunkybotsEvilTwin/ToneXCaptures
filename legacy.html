@@ -1,0 +1,296 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Legacy Captures — Funkybot’s ToneX Collection</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+
+    <style>
+      /* ---- Header layout: prevent overlap, consistent with index.html ---- */
+      #header.container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+      #logo { flex: 0 0 auto; }
+      #nav  { flex: 1 1 0; }
+      #header #nav ul {
+        display: flex !important;
+        flex-wrap: nowrap;
+        gap: 0.35rem 0.75rem;
+        justify-content: flex-end;
+        align-items: center;
+      }
+      #header #nav ul li { white-space: nowrap; }
+
+      /* Hide "by Funkybot" when screen starts to tighten */
+      @media (max-width: 1280px) {
+        #logo span { display: none; }
+      }
+
+      /* Tighten nav spacing progressively */
+      @media (max-width: 1270px) {
+        #header #nav ul li a { padding: 0.4em 0.7em; font-size: 0.95em; }
+      }
+      @media (max-width: 1080px) {
+        #header #nav ul li a { padding: 0.35em 0.6em; font-size: 0.93em; }
+      }
+      /* Allow gentle wrapping below ~980px */
+      @media (max-width: 980px) {
+        #header #nav ul { flex-wrap: wrap; row-gap: 0.25rem; }
+      }
+
+      /* ---- Legacy Captures Section ---- */
+      #legacy-wrapper {
+        padding: 4em 0 3em 0;
+      }
+      #legacy-wrapper header.major h2 {
+        font-size: 2em;
+        margin-bottom: 0.5em;
+      }
+      #legacy-wrapper p.intro {
+        font-size: 1.05em;
+        line-height: 1.6;
+        margin-bottom: 1.5em;
+        max-width: 800px;
+      }
+      ul.legacy-list {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        max-width: 700px;
+      }
+      ul.legacy-list li {
+        background: #fff;
+        border: 1px solid rgba(0,0,0,0.08);
+        border-radius: 0.35rem;
+        padding: 1em 1.25em;
+        margin-bottom: 0.85em;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: box-shadow 0.15s ease-in-out;
+      }
+      ul.legacy-list li:hover { box-shadow: 0 3px 10px rgba(0,0,0,0.1); }
+      ul.legacy-list a {
+        color: #007acc;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      ul.legacy-list a:hover { text-decoration: underline; }
+      ul.legacy-list time {
+        font-size: 0.9em;
+        opacity: 0.7;
+      }
+
+      /* ---- FAQ Section ---- */
+      #faq-wrapper {
+        padding: 2.25em 0 2.5em; /* adds nice breathing room */
+      }
+      #faq-wrapper header.major h2 {
+        font-size: 2em;
+        margin-bottom: 0.75em;
+      }
+      #faq-wrapper .faq-list { max-width: 800px; }
+
+      /* Tighten spacing inside FAQ answers */
+      #faq-wrapper .faq-list p {
+        line-height: 1.4;
+        margin-top: 0.4em;
+        margin-bottom: 0.8em;
+      }
+      #faq-wrapper .faq-list br { line-height: 1; }
+
+      #faq-wrapper details summary {
+        cursor: pointer;
+        font-weight: 600;
+        margin-bottom: 0.3em;
+      }
+      #faq-wrapper details[open] summary {
+        margin-bottom: 0.6em;
+      }
+    </style>
+  </head>
+  <body class="is-preload">
+    <div id="page-wrapper">
+
+      <!-- Header -->
+      <div id="header-wrapper">
+        <header id="header" class="container">
+          <div id="logo">
+            <h1><a href="index.html">ToneX Captures</a></h1>
+            <span>by Funkybot</span>
+          </div>
+          <nav id="nav">
+            <ul>
+              <li><a href="index.html#captures">Amp Captures</a></li>
+              <li><a href="index.html#irs">Impulse Responses</a></li>
+              <li class="current"><a href="legacy.html">Legacy Captures</a></li>
+              <li><a href="index.html#about">About</a></li>
+            </ul>
+          </nav>
+        </header>
+      </div>
+
+      <!-- Legacy Section -->
+      <div id="legacy-wrapper">
+        <div class="container">
+          <header class="major">
+            <h2>Legacy Captures</h2>
+          </header>
+
+          <p class="intro">
+            These are <strong>ToneX v1</strong> captures of my amps.
+            They were made using the original capture process and are provided here
+            for archival purposes. These will not be updated, but you’re welcome
+            to download and use them freely. These were also meant to complement what was uploaded to Tone.net.
+          </p>
+
+          <ul class="legacy-list">
+            <li>
+              <a href="legacy/Funkybot_Cabinet_IRs_v1.zip">Funkybot Cabinet IR's v1</a>
+              <time datetime="2025-02-27">Feb 27, 2025</time>
+            </li>
+            <li>
+              <a href="legacy/Funkybot_94_Evil_Twin_Amp_DI_Captures_v1.zip">Fender '94 Evil Twin Amp DI Captures (ToneX v1)</a>
+              <time datetime="2024-12-30">Dec 30, 2024</time>
+            </li>
+            <li>
+              <a href="legacy/Funkybot_AC15_DI_Capture_Extras_v1.zip">Vox AC15C1X DI Captures (ToneX v1)</a>
+              <time datetime="2024-09-21">Sep 21, 2024</time>
+            </li>
+            <li>
+              <a href="legacy/Funkybot_Top_Hat_King_Royal_Captures_v1.zip">Top Hat King Royal DI Captures (ToneX v1)</a>
+              <time datetime="2024-11-27">Nov 27, 2024</time>
+            </li>
+            <li>
+              <a href="legacy/Funkybot_Vibrolux_Reverb_DI_Captures_v1.zip">1979 Fender Vibrolux Reverb DI Captures (ToneX v1)</a>
+              <time datetime="2025-02-10">Feb 10, 2025</time>
+            </li>
+            <li>
+              <a href="legacy/Funkybot_Vibrolux_Reverb_Full_Capture_Extras_v1.zip">1979 Fender Vibrolux Reverb Full Captures (ToneX v1)</a>
+              <time datetime="2024-12-02">Dec 2, 2024</time>
+            </li>
+            <li>
+              <a href="legacy/Funkybot_Laney_Lionheart_L5T_Extra_Captures_v1.zip">Laney Lionheart L5T Extra Captures (ToneX v1)</a>
+              <time datetime="2024-10-05">Oct 5, 2024</time>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- FAQs (inside container to keep padding/gutters) -->
+      <div id="faq-wrapper">
+        <div class="container" id="faq">
+          <header class="major">
+            <h2>Capture FAQs</h2>
+          </header>
+
+          <div class="faq-list">
+            <details>
+              <summary>How do I install these?</summary>
+              <p>
+                For ToneX captures, you must extract the ZIP file first. Once extracted, open the ToneX plugin and drag the extracted files into the Tone Model list in ToneX. The presets should automatically import.
+                You can also use the Import option from the File menu.<br><br>
+                For the Impulse Responses, you can use them in any IR loader, including ToneX. See the documentation for your IR loader of choice.
+              </p>
+            </details>
+
+            <details>
+              <summary>What input gain settings do you use?</summary>
+              <p>
+                I keep my ToneX (not the One) pedal at the default setting (+8.5 dB). In the ToneX software, if you’re targeting about -12 dBU, you’ll be right in the ballpark.
+              </p>
+            </details>
+
+            <details>
+              <summary>What is your naming convention?</summary>
+              <p>
+                If the amp has just a few controls, like the Princeton, I’ll include the settings in the Tone Model name. If the amp has a large number of controls where that’s an issue, then see the next question...
+              </p>
+            </details>
+
+            <details>
+              <summary>Why label captures A, B, C, etc.?</summary>
+              <p>
+                For amps with lots of controls, I label them alphabetically by gain level so you can sort by name in the ToneX software and scroll through different gain levels easily.
+                Note that the gain levels are an approximation — for example, if an amp has a pre–phase inverter master volume, a gain level of 8 with the master turned down low may actually have less gain than a capture at 7 with the master at 10. The gain levels are just guidelines dialed in by ear.
+              </p>
+            </details>
+
+            <details>
+              <summary>What do BAL, BRT, WRM, SCP, CUT mean?</summary>
+              <p>
+                They indicate EQ profiles:<br>
+                <strong>BAL</strong> = Balanced (usually dialed in for a Strat)<br>
+                <strong>BRT</strong> = Brighter, less bass (pairs well with humbuckers)<br>
+                <strong>WRM</strong> = Warmer, fewer highs, more bass (think Telecaster bridge pickup)<br>
+                <strong>DRK</strong> = Darker, more subdued or jazzy<br>
+                <strong>MID / MID+</strong> = Pushed midrange<br>
+                <strong>CUT</strong> = Treble cut
+              </p>
+            </details>
+
+            <details>
+              <summary>Where do you document the amp settings?</summary>
+              <p>
+                The amp settings for all captures are typically in the Description field. I try to be as explicit as possible but sometimes need to abbreviate settings to fit within character limits.
+                You’ll usually find the guitar or pickup types used when dialing in the tone in the Notes field.
+              </p>
+            </details>
+
+            <details>
+              <summary>Why don't you charge for these captures?</summary>
+              <p>
+                This question comes up a lot. I make these captures for myself — I love having the ability to play through my amps from anywhere, at any time of day or night, via ToneX. I also like to make a lot of captures of my amps so I don't feel like I'm missing a setting or can't find a tone that's just right for whichever guitar I'm playing.<br><br>
+                Charging for captures would mean handling support requests, setting up a business entity, and/or dealing with taxes — none of which I'm particularly interested in.<br><br>
+                My goal is simply to make killer-sounding captures of my own gear that are on par with, or better than, some commercially available captures — and I do that because that’s what I want for myself.
+              </p>
+            </details>
+
+            <details>
+              <summary>Please like on Tone.net!</summary>
+              <p>
+                If you dig these captures, a like on Tone.net helps others find them.
+              </p>
+            </details>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div id="footer-wrapper">
+        <footer id="footer" class="container">
+          <section>
+            <h2>About This Project</h2>
+            <p>I make these captures and IR's of my personal amp collection for my own use and I'm happy to share with others.</p>
+
+            <p style="margin-top: 1.75em;">
+              <strong>License &amp; Usage:</strong> All captures and impulse responses on this site are free for anyone to download, use, and share.
+              Please don’t resell or include these files in any paid pack or product without my permission.
+            </p>
+
+            <p style="font-size: 0.95em; color: inherit; opacity: 0.85; margin-top: 1em;">
+              <strong>Disclaimer:</strong> All brand names, trademarks, and product names mentioned on this site are the property of their respective owners
+              and are used here for reference purposes only. This site is not affiliated with or endorsed by any of the manufacturers listed.
+            </p>
+
+            <ul class="menu">
+              <li>&copy; 2025 Funkybot. Design by <a href="https://html5up.net">HTML5 UP</a>.</li>
+            </ul>
+          </section>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.dropotron.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
