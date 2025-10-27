@@ -219,6 +219,32 @@
         margin-top: 1.0em;
         justify-content: flex-start;
       }
+	 
+	 /* Add top padding to Amp Captures header on mobile */
+      @media (max-width: 640px) {
+        #captures header.major {
+          padding-top: 1.75em;
+        }
+      }
+      
+	 /* Add padding for the "Capture FAQs" header on small screens */
+      @media (max-width: 640px) {
+        #faq-wrapper header.major {
+          padding-left: 1.5em;
+          padding-right: 1em;
+        }
+      }
+	 
+      /* Add horizontal padding for FAQ content on mobile */
+      @media (max-width: 640px) {
+        #faq-wrapper .faq-list {
+          padding-left: 1.5em;
+          padding-right: 1em;
+        }
+      }
+	 
+	 /* Nice-to-have: prevent anchor jumps from hugging the top if you ever make the header sticky */
+      #captures { scroll-margin-top: 64px; }
     </style>
   </head>
   <body class="is-preload homepage">
