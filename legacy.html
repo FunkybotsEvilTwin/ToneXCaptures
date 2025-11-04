@@ -182,97 +182,117 @@
         </div>
       </div>
 
-     <!-- FAQs -->
-     <div id="faq-wrapper">
-       <div class="container" id="faq">
-         <header class="major">
-           <h2>Capture FAQs</h2>
-         </header>
-     
-         <div class="faq-list">
-           <details>
-             <summary>How do I install these?</summary>
-             <p>
-               For ToneX captures, you must extract the ZIP file first. Once extracted, open the ToneX plugin and drag the extracted files into the Tone Model list in ToneX. The presets should automatically import.
-               You can also use the Import option from the File menu.<br><br>
-               For the Impulse Responses, you can use them in any IR loader, including ToneX. See the documentation for your IR loader of choice.
-             </p>
-           </details>
-     
-           <details>
-             <summary>What input gain settings do you use?</summary>
-             <p>
-               I keep my ToneX (not the One) pedal at the default setting (+8.5 dB). In the ToneX software, if you’re targeting about -12 dBU, you’ll be right in the ballpark.<br><br>
-			My general philosophy is to capture the sound of the amps at the same level, so that when you switch guitars, what's an "edge of breakup" tone with humbuckers will still be "clean" with single coils. This way, once you find the right input level setting, you change the captures for each guitar versus trying to constantly adjust the input level. But there are no rules. Do whatever sounds good to you!
-             </p>
-           </details>
-     
-           <details>
-             <summary>What is your naming convention?</summary>
-             <p>
-               If the amp has just a few controls, like the Princeton, I’ll include the settings in the Tone Model name. If the amp has a large number of controls where that’s an issue, then see the next question...
-             </p>
-           </details>
-     
-           <details>
-             <summary>Why label captures A, B, C, etc.?</summary>
-             <p>
-               For amps with lots of controls, I label them alphabetically by gain level so you can sort by name in the ToneX software and scroll through different gain levels easily.
-               Note that the gain levels are an approximation — for example, if an amp has a pre–phase inverter master volume, a gain level of 8 with the master turned down low may actually have less gain than a capture at 7 with the master at 10. The gain levels are just guidelines dialed in by ear.
-             </p>
-           </details>
-     
-           <details>
-             <summary>What do BAL, BRT, WRM, SCP, CUT mean?</summary>
-             <p>
-               They indicate EQ profiles:<br>
-               <strong>BAL</strong> = Balanced (usually dialed in for a Strat)<br>
-               <strong>BRT</strong> = Brighter, less bass (pairs well with humbuckers)<br>
-               <strong>WRM</strong> = Warmer, fewer highs, more bass (think Telecaster bridge pickup)<br>
-               <strong>DRK</strong> = Darker, more subdued or jazzy<br>
-               <strong>MID / MID+</strong> = Pushed midrange<br>
-               <strong>SCP</strong> = Scooped mids<br>
-			<strong>CUT</strong> = Treble cut<br>
-			<strong>PRS</strong> = Presence, brighter<br>
-               <strong>THN</strong> = Thinned lows<br>
-			<strong>BST</strong> = Boost: input gain boosted or boost pedal adding gain<br>
-             </p>
-           </details>
-     
-           <details>
-             <summary>Where do you document the amp settings?</summary>
-             <p>
-               The amp settings for all captures are typically in the Description field. I try to be as explicit as possible but sometimes need to abbreviate settings to fit within character limits.
-               You’ll usually find the guitar or pickup types used when dialing in the tone in the Notes field.
-             </p>
-           </details>
-     
-           <details>
-             <summary>Why don't you charge for these captures?</summary>
-             <p>
-               This question comes up a lot. I make these captures for myself — I love having the ability to play through my amps from anywhere, at any time of day or night, via ToneX. I also like to make a lot of captures of my amps so I don't feel like I'm missing a setting or can't find a tone that's just right for whichever guitar I'm playing.<br><br>
-               Charging for captures would mean handling support requests, setting up a business entity, and/or dealing with taxes — none of which I'm particularly interested in.<br><br>
-               My goal is simply to make killer-sounding captures of my own gear that are on par with, or better than, some commercially available captures — and I do that because that’s what I want for myself.
-             </p>
-           </details>
+      <!-- FAQs -->
+      <div id="faq-wrapper">
+        <div class="container" id="faq">
+          <header class="major">
+            <h2>Capture FAQs</h2>
+          </header>
+      
+          <div class="faq-list">
+            <details>
+              <summary>How do I install these?</summary>
+              <p>
+                For ToneX captures, you must extract the ZIP file first. Once extracted, open the ToneX plugin and drag the extracted files into the Tone Model list in ToneX. The presets should automatically import.
+                You can also use the Import option from the File menu.<br><br>
+                For the Impulse Responses, you can use them in any IR loader, including ToneX. See the documentation for your IR loader of choice.
+              </p>
+            </details>
+      
+            <details>
+              <summary>What input gain settings do you use?</summary>
+              <p>
+                I keep my ToneX (not the One) pedal at the default setting (+8.5 dB). In the ToneX software, if you’re targeting about -12 dBU, you’ll be right in the ballpark.<br><br>
+                My general philosophy is to capture the sound of the amps at the same level, so that when you switch guitars, what's an "edge of breakup" tone with humbuckers will still be "clean" with single coils. This way, once you find the right input level setting, you change the captures for each guitar versus trying to constantly adjust the input level. But there are no rules. Do whatever sounds good to you!
+              </p>
+            </details>
+      
+            <details>
+              <summary>What is your naming convention?</summary>
+              <p>
+                If the amp has just a few controls, like the Princeton, I’ll include the settings in the Tone Model name. If the amp has a large number of controls where that’s an issue, then see the next question...
+              </p>
+            </details>
+      
+            <details>
+              <summary>Why label captures A, B, C, etc.?</summary>
+              <p>
+                For amps with lots of controls, I label them alphabetically by gain level so you can sort by name in the ToneX software and scroll through different gain levels easily.
+                Note that the gain levels are an approximation — for example, if an amp has a pre–phase inverter master volume, a gain level of 8 with the master turned down low may actually have less gain than a capture at 7 with the master at 10. The gain levels are just guidelines dialed in by ear.
+              </p>
+            </details>
+      
+            <details>
+              <summary>What do BAL, BRT, WRM, SCP, CUT mean?</summary>
+              <p>
+                They indicate EQ profiles:<br>
+                <strong>BAL</strong> = Balanced (works well with gutiars like a Strat or Jazzmaster)<br>
+                <strong>BRT</strong> = Brighter, less bass (pair well with Les Paul style guitars without the neck pickup being completely muddy)<br>
+                <strong>WRM</strong> = Warm, less treble, more bass (should work with a bright Telecaster bridge pickup and similar)<br>
+                <strong>DRK</strong> = Darker, more subdued or jazzy<br>
+                <strong>MID / MID+</strong> = Pushed midrange<br>
+                <strong>SCP</strong> = Scooped mids<br>
+                <strong>CUT</strong> = Treble cut<br>
+                <strong>PRS</strong> = Presence, brighter<br>
+                <strong>THN</strong> = Thinned lows<br>
+                <strong>BST</strong> = Boost: input gain boosted or boost pedal adding gain<br>
+              </p>
+            </details>
+      
+            <details>
+              <summary>Where do you document the amp settings?</summary>
+              <p>
+                The amp settings for all captures are typically in the Description field. I try to be as explicit as possible but sometimes need to abbreviate settings to fit within character limits.
+                You’ll usually find the guitar or pickup types used when dialing in the tone in the Notes field.
+              </p>
+            </details>
 
-           <details>
-             <summary>Will you do Kemper, Quad Cortex, NAM profiles or some other profiler?</summary>
-             <p>
-			Not likely. I don't own a Kemper or QC. I'm not a NAM user. I'm not selling these commercially. So I'm just sticking to ToneX.
-             </p>
-           </details>
+            <details>
+              <summary>What's the deal with DI and +IR?</summary>
+              <p>
+                DI captures don’t include a mic’d cabinet, which means you can pair them with any impulse response (IR) you like without changing the tone. 
+                Think of it like running the amp as a head and choosing different speaker cabinets. 
+                Each set includes one or more of my own IRs to get you started, but you’re free to use any you prefer. 
+                That’s the main advantage of DI+IR captures: flexibility. I may add more mic’d captures in the future, 
+                though there won’t be nearly as many since DI captures can be made quietly at any time without bothering the dog or the neighbors—and mic’d ones can get loud.
+              </p>
+            </details>
+            
+            <details>
+              <summary>What’s your recording chain for the DI captures?</summary>
+              <p>
+                I send a line out from my RME Fireface 802FS into a Lehle P-Split, which handles reamping and feeds the amp’s input. 
+                The amp’s speaker output goes into a reactive load, either a Suhr Reactive Load IR for 8-ohm amps or a Fryette Power Station for 4 or 16 ohms. 
+                From there, the line out runs directly to the ToneX Modeler, capturing the amp just as it would sound driving a real speaker. 
+                The result is accurate dynamics, realistic feel, and completely silent operation.
+              </p>
+            </details>
 
+            <details>
+              <summary>Why don't you charge for these captures?</summary>
+              <p>
+                This question comes up a lot. I make these captures for myself — I love having the ability to play through my amps from anywhere, at any time of day or night, via ToneX. I also like to make a lot of captures of my amps so I don't feel like I'm missing a setting or can't find a tone that's just right for whichever guitar I'm playing.<br><br>
+                Charging for captures would mean handling support requests, setting up a business entity, and/or dealing with taxes — none of which I'm particularly interested in.<br><br>
+                My goal is simply to make killer-sounding captures of my own gear that are on par with, or better than, some commercially available captures — and I do that because that’s what I want for myself.
+              </p>
+            </details>
 
-           <details>
-             <summary>Please like on Tone.net!</summary>
-             <p>
-               If you dig these captures, a like on Tone.net helps others find them.
-             </p>
-           </details>
-         </div>
-       </div>
-     </div>
+            <details>
+              <summary>Will you do Kemper, Quad Cortex, NAM profiles or some other profiler?</summary>
+              <p>
+                Not likely. I don't own a Kemper or QC. I'm not a NAM user. I'm not selling these commercially. So I'm just sticking to ToneX.
+              </p>
+            </details>
+
+            <details>
+              <summary>Please like on Tone.net!</summary>
+              <p>
+                If you dig these captures, a like on Tone.net helps others find them.
+              </p>
+            </details>
+          </div>
+        </div>
+      </div>
 
       <!-- Footer -->
       <div id="footer-wrapper">
