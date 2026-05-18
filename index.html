@@ -140,6 +140,7 @@
       .tag-di   { background: #e3f2fd; color: #0d47a1; border-color: #bbdefb; }
       .tag-ir   { background: #e8f5e9; color: #1b5e20; border-color: #c8e6c9; }
       .tag-full { background: #fff3e0; color: #e65100; border-color: #ffe0b2; }
+	 .tag-level { background: #ede7f6; color: #4527a0; border-color: #d1c4e9; }
 
       @media (max-width: 480px) {
         .feature-tags { gap: 0.3rem; }
@@ -254,6 +255,38 @@
           </header>
 
           <div class="row">
+
+      <!-- Supro Keeley Custom 12 -->
+      <div class="col-4 col-12-medium">
+      <section class="box feature">
+      <a href="captures/Funkybot_Supro_Keeley_Custom_12_Captures_v2.zip" class="image featured thumb">
+      	<img src="images/SuproKeeleyCustom12.png" alt="Supro Keeley Custom 12" />
+      </a>
+      <div class="inner">
+      	<header>
+      	<h2>Supro 1968RK <br>Keeley Custom 12</h2>
+      	<p class="meta">Last Updated: <time datetime="2026-05-06">May 6, 2026</time></p>
+      	</header>
+      	<div class="content">
+      	<p>Pedal platform with big mids</p>
+		<p class="desc">
+		The Supro Keeley Custom 12 is a bold, warm, high-headroom amp built around the idea of being a pedal platform. 
+		It has a full low end, pronounced midrange, and a smooth top end that keeps things clear without getting harsh. 
+		Compared to a more ragged vintage Supro sound, this one feels cleaner and more controlled, making it easy to stack drives, fuzzes, and boosts in front. 
+		The feel is big and immediate, with enough headroom to keep pedals clear without turning sterile. Presets include cabinet IRs where the speaker was replaced with a Celestion Greenback.
+		</p>
+      	</div>
+      	<div class="actions">
+      	<a href="captures/Funkybot_Supro_Keeley_Custom_12_Captures_v2.zip" class="button icon solid fa-download">Download</a>
+      	</div>
+      	<div class="feature-tags" aria-label="Capture feature tags">
+      	<span class="tag tag-di" aria-label="Direct Input">DI</span>
+      	<span class="tag tag-ir" aria-label="Includes Impulse Responses">IR</span>
+      	<span class="tag tag-level" aria-label="Calibrated to plus 12 dBu">+12dBu</span>
+      	</div>
+      </div>
+      </section>
+      </div>
 
 	<!-- Ceriatone Card -->
 	<div class="col-4 col-12-medium">
@@ -525,7 +558,12 @@
 
             <p class="meta">Last Updated: <time datetime="2025-11-24">Nov 24, 2025</time></p>
 
-            <p>Download my personal collection of guitar cabinet IRs captured using a Fryette PS-2A, RME interface, and SM57 + Beyer M160 mic setup. Perfect for close mic'd rock and roll tones. I'll continue to add to this set over time so check back regularly and pay attention to the last updated date.</p>
+            <p>Download my personal collection of guitar cabinet IRs. Perfect for close mic'd rock and roll tones. I'll continue to add to this set over time so check back regularly and pay attention to the last updated date.</p>
+
+            <p>
+            For more information on my approach to IR capturing, see my
+            <a href="ir-capturing.html">IR Capturing Guide</a>. Particularly, if you've ever thought about creating your own.
+            </p>
 
             <ul class="actions">
               <li><a href="IRs/Funkybot_Cabinet_IRs_V2.zip" class="button icon solid fa-download">Download IR Pack</a></li>
@@ -630,8 +668,14 @@
             <details>
               <summary>What input gain settings do you use?</summary>
               <p>
-                I keep my ToneX (not the One) pedal at the default setting (+8.5 dB). In the ToneX software, if you’re targeting about -12 dBU, you’ll be right in the ballpark. One easy way to get there is to plug a guitar with humbuckers into your audio interface. Increase the gain until the very hardest of strums clips the input. Now back the input down the slightest touch so those same hard strums no longer clip. If you do that, you'll be at approximately the same gain setting I am.<br><br>
-                My general philosophy is to capture the sound of the amps at the same level, so that when you switch guitars, what's an "edge of breakup" tone with humbuckers will still be "clean" with single coils. This way, once you find the right input level setting, you change the captures for each guitar versus trying to constantly adjust the input level. But there are no rules. Do whatever sounds good to you!
+                Newer captures tagged <strong>+12dBu</strong> are calibrated around an interface instrument input with a maximum input level of about +12dBu when the instrument gain is set to <strong>minimum</strong>. 
+                That gives the captures a more standardized operating level, which should line up better with potential future NAM captures and with the way some other vendors calibrate their amp models.<br><br>
+
+                Many interfaces hover around +12 to +13 dBu for the instrument input. Check your manual and look for the maximum input level for the instrument input. If it’s close to +12dBu at minimum gain, start there. If your interface has less headroom, you may need to lower the signal going into the model. If it has more headroom, you may need a little more input gain.<br><br>
+
+                Older captures that are <strong>not</strong> tagged <strong>+12dBu</strong> were made at my previous level and want an input signal roughly 6 dB hotter than the newer calibrated sets. My prior guidance for those still applies: if you want to mimic my gain levels, set your interface gain just below clipping when strumming hard with humbuckers, then park it there.<br><br>
+
+                My general philosophy is still to capture each set at a consistent level, so that when you switch guitars, what is edge-of-breakup with humbuckers may be clean with single coils. Once you find the right input level setting, you can change captures for more or less gain instead of tweaking the input level on a per-guitar basis. But there are no rules. Do whatever sounds good to you!
               </p>
             </details>
       
@@ -747,9 +791,10 @@
               <strong>Disclaimer:</strong> All brand names, trademarks, and product names mentioned on this site are the property of their respective owners and are used here for reference purposes only. This site is not affiliated with or endorsed by any of the manufacturers listed.
             </p>
 
-            <ul class="menu">
-              <li>&copy; 2025 Funkybot. Design based on an HTML5 UP theme (CC BY 3.0) — <a href="https://html5up.net">html5up.net</a>.</li>
-            </ul>
+             <ul class="menu">
+             <li><a href="ir-capturing.html">Impulse Response Capturing Guide</a></li>
+             <li>&copy; 2025 Funkybot. Design based on an HTML5 UP theme (CC BY 3.0) — <a href="https://html5up.net">html5up.net</a>.</li>
+             </ul>
           </section>
         </footer>
       </div>

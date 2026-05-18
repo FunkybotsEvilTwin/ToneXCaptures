@@ -1,0 +1,499 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <title>Guitar Cabinet IR Capturing | Funkybot’s ToneX Captures</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+
+    <style>
+
+      html { scroll-behavior: smooth; }
+
+      .toc {
+        border-left: 4px solid rgba(0,0,0,0.15);
+        padding: 1em 1.25em;
+        margin: 2em 0 2.5em;
+        background: rgba(0,0,0,0.03);
+        border-radius: 0.25rem;
+      }
+
+      .toc h3 {
+        margin-top: 0;
+        margin-bottom: 0.75em;
+      }
+
+      .toc ul {
+        margin: 0;
+        padding-left: 1.25em;
+      }
+
+      .toc li {
+        margin-bottom: 0.35em;
+      }
+
+      .toc .subsection {
+        margin-left: 1.15em;
+        font-size: 0.95em;
+        opacity: 0.9;
+      }
+
+      .article h3[id] {
+        scroll-margin-top: 2em;
+      }
+
+      /* ---------------------------------------
+         Header: match index layout
+      --------------------------------------- */
+      @media (max-width: 1280px) {
+        #logo span { display: none; }
+      }
+
+      #header.container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+      #logo { flex: 0 0 auto; }
+      #nav { flex: 1 1 0; }
+      #header #nav ul {
+        display: flex !important;
+        flex-wrap: nowrap;
+        gap: 0.35rem 0.75rem;
+        justify-content: flex-end;
+        align-items: center;
+      }
+      #header #nav ul li { white-space: nowrap; }
+
+      @media (max-width: 1280px) {
+        #header #nav ul li a { padding: 0.4em 0.7em; font-size: 0.95em; }
+      }
+      @media (max-width: 1080px) {
+        #header #nav ul li a { padding: 0.35em 0.6em; font-size: 0.93em; }
+      }
+      @media (max-width: 980px) {
+        #header #nav ul { flex-wrap: wrap; row-gap: 0.25rem; }
+      }
+
+      /* ---------------------------------------
+         Article layout
+      --------------------------------------- */
+      .article-wrapper {
+        padding-top: 3em;
+      }
+
+      .article {
+        max-width: 960px;
+        margin: 0 auto;
+      }
+
+      .article header.major {
+        margin-bottom: 2.25em;
+      }
+
+      .article header.major h2 {
+        margin-bottom: 0.35em;
+      }
+
+      .article .subtitle {
+        font-size: 1.1em;
+        opacity: 0.8;
+        margin: 0;
+      }
+
+      .article h3 {
+        margin-top: 2.25em;
+        margin-bottom: 0.7em;
+      }
+
+      .article h4 {
+        margin-top: 1.6em;
+        margin-bottom: 0.5em;
+      }
+
+      .article p {
+        line-height: 1.65;
+        margin-bottom: 1.15em;
+      }
+
+      .article ul {
+        margin-top: -0.25em;
+        margin-bottom: 1.35em;
+      }
+
+      .article .image.featured {
+        margin: 2em 0;
+        border-radius: 0.35rem;
+        overflow: hidden;
+      }
+
+      .article .image.featured img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .article .note {
+        border-left: 4px solid rgba(0,0,0,0.18);
+        padding: 0.75em 1em;
+        margin: 1.5em 0;
+        background: rgba(0,0,0,0.04);
+        border-radius: 0.25rem;
+      }
+
+      .article .note p:last-child {
+        margin-bottom: 0;
+      }
+
+      .article .actions {
+        margin-top: 2.5em;
+      }
+
+      @media (max-width: 640px) {
+        .article-wrapper {
+          padding-top: 2em;
+        }
+        .article {
+          padding-left: 1.5em;
+          padding-right: 1.5em;
+        }
+        .article header.major {
+          margin-bottom: 1.75em;
+        }
+        .article h3 {
+          margin-top: 2em;
+        }
+        img, video { max-width: 100%; height: auto; }
+        .container { overflow-wrap: anywhere; }
+      }
+    </style>
+  </head>
+
+  <body class="is-preload right-sidebar">
+    <div id="page-wrapper">
+
+      <!-- Header -->
+      <div id="header-wrapper">
+        <header id="header" class="container">
+          <div id="logo">
+            <h1><a href="index.html">ToneX Captures</a></h1>
+            <span>by Funkybot</span>
+          </div>
+          <nav id="nav">
+            <ul>
+              <li><a href="index.html#captures">Amp Captures</a></li>
+              <li><a href="index.html#irs">Impulse Responses</a></li>
+              <li><a href="legacy.html">Legacy Captures</a></li>
+              <li><a href="index.html#about">About</a></li>
+            </ul>
+          </nav>
+        </header>
+      </div>
+
+      <!-- Main -->
+      <div id="main-wrapper" class="article-wrapper">
+        <div class="container">
+          <article class="article">
+            <header class="major">
+              <h2>Guitar Cabinet IR Capturing</h2>
+              <p class="subtitle">Practical Notes From Real-World Experience</p>
+            </header>
+
+            <section class="toc" aria-label="Table of Contents">
+              <h3>Table of Contents</h3>
+              <ul>
+                <li><a href="#introduction">Introduction</a></li>
+                <li><a href="#what-is-ir">What Is a Guitar Cabinet IR?</a></li>
+                <li><a href="#signal-flow">Signal Flow and Power Amps</a></li>
+                <li><a href="#test-signal">Test Signal: Pulse vs Sweep</a></li>
+                <li><a href="#speaker-level">Speaker Level (Critical)</a></li>
+                <li><a href="#speakers">Speakers</a></li>
+                <li class="subsection"><a href="#understanding-speaker">Understanding the Speaker</a></li>
+                <li><a href="#mic-placement">Microphone Placement</a></li>
+                <li class="subsection"><a href="#starting-position-horizontal">Starting Position (Horizontal)</a></li>
+                <li class="subsection"><a href="#vertical-position">Vertical Position</a></li>
+                <li class="subsection"><a href="#distance-and-proximity">Distance and Proximity</a></li>
+                <li><a href="#daw-setup">How I Set Up My DAW</a></li>
+                <li><a href="#what-makes-good-ir">What Makes a Good IR</a></li>
+                <li><a href="#pairing-amps-and-irs">Pairing Amps and IRs</a></li>
+                <li><a href="#final-thoughts">Final Thoughts</a></li>
+              </ul>
+            </section>
+
+            <section>
+              <h3 id="introduction">Introduction</h3>
+
+              <p>I started out my impulse response (IR) capturing journey wanting to find cabinet IRs that matched up well with my actual amp cabinets. I was doing ToneX captures of my amps and wanted IRs that actually sounded like my cabs. I bought thousands of individual IRs from all the big players, but these still weren’t my particular speakers and cabinets, so I eventually decided I should try to make my own.</p>
+
+              <p>It’s surprisingly hard to find good, reliable information on how to create high-quality, professional-level guitar cabinet impulse responses. There’s no shortage of articles and YouTube videos, but a lot of the advice I came across was leading to sub-optimal results that didn’t sound quite as good as some of the commercial IRs I was buying.</p>
+
+              <p>After a lot of trial and error, I think I’ve finally landed on results that are comparable to commercial IRs. Rather than gatekeep this information, I wanted to create this Guitar Cabinet IR Capturing Guide to document what works. I’m not presenting this as the “correct” way to do things, just a repeatable approach that consistently produces high-quality results on par with commercial offerings.</p>
+            </section>
+
+            <section>
+              <h3 id="what-is-ir">What Is a Guitar Cabinet IR?</h3>
+
+              <p>At a basic level, a guitar cabinet impulse response (IR) is a snapshot of how a speaker, microphone, and signal chain shape the sound of an amp.</p>
+
+              <p>When you play through a real guitar cabinet, you’re not just hearing the amp. You’re hearing the speaker, the cabinet, the microphone, and the mic preamp. All of those elements have a huge impact on the final tone.</p>
+
+              <p>An IR captures that filtering and lets you apply it later in a digital environment. Instead of running your amp through a real cabinet and mic every time, you can run a signal through an IR and get a very similar result.</p>
+
+              <p>But an impulse response is essentially a static snapshot of the system at a specific moment and level. It does a great job capturing the overall filtering of the cabinet, microphone, and signal chain, but it can’t fully capture how a speaker behaves dynamically. IRs are extremely useful, but I just don’t think of them as a perfect representation of a real cabinet.</p>
+            </section>
+
+            <section>
+              <h3 id="signal-flow">Signal Flow and Power Amps</h3>
+
+              <a href="#" class="image featured">
+                <img src="images/ir-signal-flow.png" alt="Signal flow diagram for guitar cabinet IR capture" />
+              </a>
+		    
+              <p>You’ll need a few pieces of gear to capture impulse responses of your guitar cabinets: a DAW, audio interface, power amp, guitar cabinet, microphone, mic preamp, and deconvolution software.</p>
+
+              <div class="note">
+                <p><strong>Important:</strong> before going any further, a quick warning: you can absolutely damage your amp, power amp, or speakers if you don’t know what you’re doing. Make sure you understand what each connection is doing, what safe signal levels look like, and how to properly hook everything up before attempting this.</p>
+              </div>
+
+              <p>At a high level, the process is simple. You generate a test signal in your DAW, send it out through your interface, then into a power amp that is driving your guitar cabinet. From there, you mic the cabinet, run that into a mic preamp, back into your interface, record the result in your DAW, and then use that recording to create an impulse response.</p>
+
+              <p>The key point here is that guitar speakers must be driven by a power amp. You cannot connect a speaker cabinet directly to your interface output and expect it to behave correctly. At best, it won’t work. At worst, you can damage something.</p>
+
+              <p>In my case, I use a Fryette Power Station PS-2A to drive my cabinets. It’s tube-based, but very clean in this application. A solid-state power amp would also be a great option, and in some cases may even be preferable for consistency.</p>
+
+              <p>While a dedicated power amp is ideal, you can also use the effects return of an amp if you’re careful. The main thing to watch out for with this is level. Don’t just slam a line-level signal straight into an FX return. You can overload that stage and introduce filtering or distortion that isn’t representative of the cabinet itself.</p>
+            </section>
+
+            <section>
+              <h3 id="test-signal">Test Signal: Pulse vs Sweep</h3>
+
+              <p>A lot of guides recommend using a Dirac pulse. In simple terms, this is an extremely short, full-level spike in a digital signal, essentially a single-sample “click” that excites the system all at once.</p>
+
+              <p>In my experience, this approach didn’t give great results. It was inconsistent and very sensitive to noise. If I fired off a few pulses in a row and created an IR from each one, they were all slightly different. That’s not what you want. If your capture method produces different results every time, something is wrong.</p>
+
+              <p>What worked much better was using a 30-second sine sweep. This is a tone that slowly sweeps across the frequency range over time, which is then deconvolved back into an impulse response.</p>
+
+              <p>I generate and process these sweeps using Voxengo Deconvolver. The results are far more consistent, the signal-to-noise ratio is significantly better, and the low end feels much more natural and accurate.</p>
+
+              <a href="#" class="image featured">
+                <img src="images/deconvolver-test-tone.png" alt="Voxengo Deconvolver sine sweep generation settings" />
+              </a>
+
+              <p>In practice, this was the first real breakthrough for me. Switching from pulses to a longer sine sweep immediately led to results that felt much closer to the commercial IRs I had been using.</p>
+
+              <p>You don’t have to use Voxengo specifically, there are other tools that can do the same thing. The key takeaway is simple: for guitar cabinet IR capture, a longer sine sweep will generally give you more reliable and more professional results than a short pulse.</p>
+            </section>
+
+            <section>
+              <h3 id="speaker-level">Speaker Level (Critical)</h3>
+
+              <p>Once everything is connected, the level you capture the speaker at is wildly important.</p>
+
+              <p>If the level is too low, the speaker isn’t really working. The bass response will feel weak, the top end will come across as overly bright, and the overall tone will feel stiff and unnatural. If the level is too high, the speaker starts to compress. The low end becomes mushy, detail gets smeared, and the top end can turn harsh.</p>
+
+              <p>What you’re looking for is the point where the speaker comes to life, but isn't being pushed hard either.</p>
+
+              <p>You can use a 1 kHz sine tone and an SPL meter as a rough reference point, since that’s how speaker sensitivity is typically measured. That can get you in the ballpark, but it only goes so far, especially with multi-speaker cabinets.</p>
+
+              <p>In practice, the most reliable approach is to run a guitar signal through your reamp chain. Start with the power amp at a low level, and slowly bring it up. Listen for the point where the low end fills in, the top end smooths out, and the speaker starts to feel like it’s doing what it’s supposed to do. That’s the range you want to work in.</p>
+
+              <p>Once you find that range, you can fine-tune within it, but don’t push beyond it. When you do, things tend to fall apart pretty quickly.</p>
+            </section>
+
+            <section>
+              <h3 id="speakers">Speakers</h3>
+
+              <p>At this point, it’s worth taking a step back and recognizing that guitar speakers are mechanical devices. They are not perfectly linear, and their response changes depending on how hard they’re being driven, which is exactly why speaker level matters. Based on my own experience, having a basic understanding of how speakers actually sound and behave goes a long way toward creating high-quality IRs.</p>
+              
+		    <h3 id="understanding-speaker">Understanding the Speaker</h3>
+
+              <a href="#" class="image featured">
+                <img src="images/speaker-zones.png" alt="Guitar speaker zones diagram showing dust cap, cone, and cone edge" />
+              </a>
+
+              <p>Before getting into mic placement, it helps to understand guitar amp speakers and think about them in simple zones.</p>
+
+              <p>The dust cap at the center is the brightest area, but can get harsh quickly. The cone just outside the dust cap is usually more balanced, and is generally a good starting point. As you move toward the outside edge of the cone, the sound gets darker and bassier, and can eventually become a little unfocused or “woofy” if you go too far.</p>
+
+              <p>On top of that, speakers aren’t perfectly uniform. Some areas are brighter, others are darker. When you’re standing in a room, you’re hearing the entire speaker as a whole, so those differences blend together. But once you put a microphone an inch or two off the grill, those differences become very obvious.</p>
+
+              <p>For example, on every Celestion speaker I own, there’s a clear “bright side” and a “dark side.” Which side is which isn’t something you can reliably predict ahead of time, you only really find it once you start moving a mic around. You don’t listen to a guitar amp with your ear an inch from the speaker, but that’s effectively what the microphone is doing.</p>
+
+              <p>The goal is to find the sweet spot on that specific speaker. That’s going to come from moving the mic around, listening to the results, and adjusting until it sounds best.</p>
+            </section>
+
+            <section>
+              <h3 id="mic-placement">Microphone Placement</h3>
+
+              <p>Microphone placement is where things really start to come together, and also where small changes make a big difference. There isn’t one “correct” way to mic a guitar cabinet, and good mic technique is a skill in itself.</p>
+
+              <p>Mic choice also plays a huge role in how you approach placement. Brighter dynamics like an SM57 can get harsh very quickly if you point them straight at the dust cap. Ribbons like an M160 are smoother but still fairly bright on-axis. On the other hand, darker mics like the Roswell Audio Cab Mic can sound great on the dust cap (it's designed for that) and might work better further back. So while there are good general starting points, mic placement always has to be considered in the context of the mic you’re using, the speaker, the cabinet, the room, and the sound in your head.</p>
+
+              <p>Microphone preamps are a whole other rabbit hole, but at a minimum, use the best preamps you have and get things sounding as good as possible at the source.</p>
+
+              <p>All that said, there are some starting points and general guidelines that will get you in the right direction.</p>
+
+              <h3 id="starting-position-horizontal">Starting Position (Horizontal)</h3>
+
+              <p>For most dynamic microphones and brighter ribbon mics, I recommend starting with the microphone positioned at the center of the cone, rather than pointing directly at the dust cap.</p>
+
+              <p>From there, I listen and make small adjustments. If I want more brightness, I’ll move the microphone slightly toward the dust cap. If it’s too bright, I’ll move it back toward the edge. I’ll also try the opposite side of the cone, since one side of the speaker is often brighter than the other. I'll even create some test IRs and audition them as I try to find the sweet spot.</p>
+
+              <p>The key here is that movements should be small. Even a quarter of an inch can make a noticeable difference. If you’re moving the mic in larger increments, it’s very easy to skip right past the sweet spot.</p>
+
+              <h3 id="vertical-position">Vertical Position</h3>
+
+              <p>Vertical position matters just as much as left-to-right placement, and it also ties directly into how the cabinet interacts with the floor.</p>
+
+              <p>I usually start with the microphone vertically centered on the speaker, but that’s not a strict rule. Moving higher or lower can reveal different tonal areas of the speaker, just like moving left and right.</p>
+
+              <p>At the same time, you also have to consider floor boundary effects. If the cabinet is sitting directly on the floor, you’ll get some low-end reinforcement from that boundary. That can make the capture sound bigger, but sometimes a little loose or exaggerated in the lows. Positioning the microphone too low can exaggerate this further, and in some cases introduce comb filtering, as reflections from the floor reach the mic at the same time as the direct sound from the speaker.</p>
+
+              <p>If you elevate the cabinet, for example on a chair or an amp stand, that low-end reinforcement is reduced and the response tends to tighten up. Neither approach is “right,” but it will change what the microphone hears. I generally don’t elevate the amps, but I have in some instances to good effect.</p>
+
+              <p>There are also practical constraints. Some cabinets have internal bracing or supports behind the grill cloth. In my Supro cabinet, for example, if the mic lines up directly with that bracing, it can block or reflect sound in a way that creates a strange, beamy or comb-filtered result. In that case, I had to adjust both vertically and horizontally to avoid it.</p>
+
+              <h3 id="distance-and-proximity">Distance and Proximity</h3>
+
+              <p>Distance matters as well, especially for the low end.</p>
+
+              <p>With dynamic microphones, I tend to start with the microphone capsule (not the grill, but the actual diaphragm inside the mic) about two and a half inches from the amp’s grill cloth. From there, I’ll move closer in small increments, usually a quarter to a half inch at a time.</p>
+
+              <p>With condenser microphones, I’ll generally start further back. For example, the Roswell Audio Cab Mic is designed specifically for guitar cabinets. It’s a darker microphone that’s meant to be used around six inches back, pointed at the dust cap, with the option to move closer if you want more low end.</p>
+
+              <p>For most directional microphones, as you move closer to the speaker, the low end increases due to proximity effect. As you pull back, the low end tightens up. So when you move the microphone closer or further out, you’re changing the overall character of the tone.</p>
+
+              <h3 id="mic-closing-thoughts">Closing Thoughts</h3>
+
+              <p>An SM57 two inches off the grill cloth, vertically centered on the center of the cone, will tell you a lot about that part of the speaker and gives you a great starting point for most speakers. Then check the opposite side and compare. Over time, you’ll start to learn your microphones, cabinets, and speakers: which combinations work, which areas sound best, and which ones don’t.</p>
+
+              <p>Treat microphone placement like an EQ. Want more brightness and tighter bass? Move in small increments toward the dust cap. Treble sounds good but you need less bass? Back the mic off a half inch at a time. Get the sound right at the source and you’ll need less EQ and processing later.</p>
+
+              <p>Ultimately though, you’re not trying to follow a fixed set of rules. You’re trying to find what sounds right on that specific speaker, with that specific mic, in your room, with your gear. And small movements matter more than you may think!</p>
+            </section>
+
+            <section>
+              <h3 id="daw-setup">How I Set Up My DAW</h3>
+            
+              <p>I use a combination of REAPER and Voxengo Deconvolver to create my IRs. You can do this with other DAWs and tools, but I want to discuss my setup because the DAW-side workflow is the part most tutorials skip. A good workflow and good notes are particularly important if you plan on building large sets, like I have been.</p>
+  
+              <p>The basic signal flow was covered earlier. On the software side, my process starts in Voxengo Deconvolver, where I generate a 30-second sine sweep test tone. I then import that sweep into REAPER.</p>
+            
+              <p>Inside REAPER, I set up a project with a dedicated “Test Tone” track that routes directly to a hardware output on my interface. I place the sine sweep on the timeline multiple times, with a few empty measures in between each one. Each sweep represents a capture point.</p>
+            
+              <p>I use markers to label and number each capture, and I’ll often use REAPER’s marker lanes to add notes about what I’m doing, things like mic position, distance, preamp, speaker, and anything else that might matter. This becomes extremely useful once you start building larger sets and need to keep track of what’s what.</p>
+            
+		    <p>The point of all this is consistency. If I’m changing mic position, level, speaker, cabinet placement, or preamp, I want that change documented clearly. Otherwise, I’m not really comparing anything. Being tedious early pays off later, especially when I’m building larger sets.</p>
+		  
+              <p>For recording, I create one track per microphone and speaker combination, and name them clearly. For example: G12H SM57, G12H M160. That way, everything stays organized as I go.</p>
+
+              <p>I also mute the master output in REAPER because I do not want to hear the sweep through my monitors or headphones at any point in this process. The test tone track is routed directly to the hardware output feeding the amp, so muting the master output does not stop the sweep from being sent where it needs to go.</p>
+		    
+		    <div class="note">
+              <p><strong>Important:</strong> these sweeps will be loud and unpleasant. When recording, take hearing protection seriously. Use earplugs, earmuffs, or both if you're going to be in the room for this. The more protection, the better.</p>
+		    </div>
+              
+              <p>I’ve said it before, but audition early and often. At this stage, it’s worth spending a few minutes exporting the tracks, deconvolving the IRs, and doing a quick audition of the actual impulse responses before calling anything finished. You may find that you need to make adjustments to the microphone placement.</p>
+            		    
+              <p>Once the sweeps have been recorded through the cabinet, REAPER’s Render dialog makes it easy to export them with consistent names.</p>
+		    
+              <a href="#" class="image featured">
+                <img src="images/export-settings.png" alt="REAPER render settings showing selected media items, 500ms tail, filename wildcards, and WAV output." />
+              </a>
+
+              <p>To export, select all the recorded media items in REAPER, excluding the original unprocessed test tones, and open the Render dialog. The important settings are:</p>
+
+              <ul>
+                <li><strong>Source:</strong> set this to <strong>Selected media items</strong> so REAPER exports each recorded sweep separately.</li>
+                <li><strong>Tail:</strong> check the <strong>Tail</strong> box and set it to <strong>500ms</strong>. I use this to give the resulting IRs a consistent, useful length.</li>
+                <li><strong>File name:</strong> choose an export directory, then use a prefix, e.g. FB 212 Top Hat, plus the <strong>$track</strong> and <strong>$marker</strong> wildcards. This automatically names the files using the track name and marker number.</li>
+                <li><strong>Output format:</strong> use <strong>WAV</strong> and <strong>mono</strong> as the primary output format, and set the secondary output format to <strong>No secondary output</strong>.</li>
+              </ul>
+		    
+              <p>Once the files are exported, I bring them back into Voxengo Deconvolver to generate the actual IRs. From there, I’ll audition them, pick favorites, sort them, and do any additional work like creating blends.</p>
+               
+		    <p>Because I record everything at 24-bit / 96 kHz, after I’ve finished sorting and organizing, I use Voxengo r8brain to resample the IRs down to other sample rates as needed.</p>
+              
+		    <h4 id="deconvolver-settings">Deconvolver Settings</h4>
+		   
+              <p>In Voxengo Deconvolver, I use a couple of settings that are worth calling out. I enable MP Transform, which stands for Minimum Phase Transform. This converts the impulse responses to minimum phase. The main benefit is that it makes blending multiple IRs much easier, since the phase and timing relationships are more consistent.</p>
+             
+              <p>I also use the “Normalize to -0.3 dBFS” option. This ensures a consistent output level across all IRs without pushing them right up against full scale.</p>
+		   
+              <a href="#" class="image featured">
+                <img src="images/deconvolver-settings.png" alt="Voxengo Deconvolver settings showing MP Transform and Normalize to -0.3 dBFS" />
+              </a>
+            </section>
+
+            <section>
+              <h3 id="what-makes-good-ir">What Makes a Good IR</h3>
+            
+              <p>When it comes to evaluating IRs, what I’m really listening for is overall balance. This is subjective, and some people may prefer something different, but I’m not trying to recreate the exaggerated lows and highs you get from standing in front of a loud amp in a room. That kind of sound can be exciting on its own, but it usually doesn’t translate well and can end up muddy in a mix.</p>
+            
+              <p>An overly bright or overly bass-heavy IR might work in certain situations, or with a narrow range of amps and settings. In my experience, I get the most mileage out of something that’s well-balanced from the start.</p>
+            
+              <p>I’m looking for something with a controlled low end, clear mids, and a top end that isn’t harsh. Something you can drop into a mix with a variety of amps and guitars and not have to fight.</p>
+            
+              <p>When creating IRs, the low end is where it’s easiest to go wrong. Too much bass can sound great when you’re playing on your own, or at low volumes, but in a mix it just turns into mud. It competes with the bass guitar and kick drum, and you end up cutting it anyway. I try to target something tighter that already sits well. If you have too much bass, you can either add distance, or move the microphone to a brighter area of the speaker, such as towards the dust cap.</p>
+            
+              <p>The top end matters just as much but harsh treble is usually easier to hear than getting the bass right. If an IR is piercing or fatiguing to listen to, it’s too bright. That’s typically a mic placement issue, so moving the microphone toward a darker area of the speaker will usually get you closer.</p>
+            
+            </section>
+
+            <section>
+              <h3 id="pairing-amps-and-irs">Pairing Amps and IRs</h3>
+
+              <p>When you’re auditioning IRs to use with an amp or amp sim, start with the big decision first: the cabinet and speaker pairing. Think about what actually makes sense for the amp you’re using.</p>
+
+              <p>If the first IR in a set sounds completely wrong, too thin, too dark, or too harsh, it’s probably not the right match. Move on. A 4x12 cabinet with a Fender Champ might sound interesting, maybe even good, but it probably wouldn’t be my starting point. I usually start by looking for like-for-like pairings, at least with combo amps.</p>
+
+              <p>Once you find a pairing that sounds pretty good with your amp, then it’s worth digging into different microphones, positions, or mixes within that set. You shouldn’t need extreme EQ or weird amp settings just to make something usable. EQ should be for fine-tuning or sweetening something that’s already working.</p>
+            </section>
+
+            <section>
+              <h3 id="final-thoughts">Final Thoughts</h3>
+
+              <p>If you’re interested in IR creation, I hope you found this information useful. This is the kind of stuff I was hoping to find but unfortunately could not when I was starting out. I feel like the IRs I’m making today are finally at the point where I’m really happy with them. And I’m happy to share them with others, along with some of the knowledge and experience that goes into creating them.</p>
+
+              <ul class="actions">
+                <li><a href="index.html#irs" class="button icon solid fa-headphones">Download Free Cab IRs</a></li>
+                <li><a href="index.html" class="button alt icon solid fa-home">Back to Home</a></li>
+              </ul>
+            </section>
+          </article>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div id="footer-wrapper">
+        <footer id="footer" class="container">
+          <section id="about">
+            <h2>About This Project</h2>
+            <p>I make these captures and IRs of my personal amp collection for my own use and I'm happy to share with others.</p>
+
+            <p style="margin-top: 1.75em;">
+              <strong>License &amp; Usage:</strong> All captures and impulse responses on this site are free for anyone to download, use, and share. Feel free to make music, release tracks, or share them with friends. The only restrictions are that you don’t resell my captures and impulse responses, or "re-capture/re-profile" them into another format or include these files in any paid pack, product, or commercial library without my permission. Thanks for keeping it fair — and enjoy the tones!
+            </p>
+
+            <p style="font-size: 0.95em; color: inherit; opacity: 0.85; margin-top: 1em;">
+              <strong>Disclaimer:</strong> All brand names, trademarks, and product names mentioned on this site are the property of their respective owners and are used here for reference purposes only. This site is not affiliated with or endorsed by any of the manufacturers listed.
+            </p>
+
+            <ul class="menu">
+              <li>&copy; 2025 Funkybot. Design based on an HTML5 UP theme (CC BY 3.0) — <a href="https://html5up.net">html5up.net</a>.</li>
+            </ul>
+          </section>
+        </footer>
+      </div>
+
+      <!-- Scripts -->
+      <script src="assets/js/jquery.min.js"></script>
+      <script src="assets/js/jquery.dropotron.min.js"></script>
+      <script src="assets/js/browser.min.js"></script>
+      <script src="assets/js/breakpoints.min.js"></script>
+      <script src="assets/js/util.js"></script>
+      <script src="assets/js/main.js"></script>
+    </div>
+  </body>
+</html>
